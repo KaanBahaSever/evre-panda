@@ -1,0 +1,16 @@
+Panda, the music bot for Evre
+Copyright (c) 2026 Kaan Baha Sever
+
+Licensed under either of the Apache License, Version 2.0 (LICENSE-APACHE)
+or the MIT license (LICENSE-MIT), at your option.
+
+This repository contains modified copies of two crates of LiveKit's Rust
+SDKs (https://github.com/livekit/rust-sdks), Copyright 2023-2026 LiveKit,
+Inc., licensed under the Apache License, Version 2.0: vendor/livekit and
+vendor/webrtc-sys. The changes are listed in vendor/README.md and marked
+"evre-panda:" in the code.
+
+Panda downloads nothing on its own except LiveKit's prebuilt libwebrtc at
+build time (webrtc-sys) and, if PANDA_YTDLP_AUTO_UPDATE is on, new yt-dlp
+releases through yt-dlp's own updater. yt-dlp and FFmpeg are separate
+programs under their own licences and are not part of this repository.

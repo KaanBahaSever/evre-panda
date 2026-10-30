@@ -1,0 +1,20 @@
+# libwebrtc (via livekit's webrtc-sys) ships as a static /MT library on Windows;
+# Rust must link the static CRT too, otherwise MSVC fails with duplicate
+# symbols (LNK1169). Mirrors livekit/rust-sdks/.cargo/config.toml.
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[target.aarch64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+# libwebrtc's ObjC categories must be force-loaded on Apple targets.
+[target.x86_64-apple-darwin]
+rustflags = ["-C", "link-args=-ObjC"]
+
+[target.aarch64-apple-darwin]
+rustflags = ["-C", "link-args=-ObjC"]
+
+# No incremental caches: they grew to 70 GB per target dir for little speed-up
+# on this workspace (see tools/dev/clean-targets.sh).
+[build]
+incremental = false

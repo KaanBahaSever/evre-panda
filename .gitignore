@@ -1,0 +1,6 @@
+/target
+/dist
+# Your own settings and Panda's data: the token is the bot's password.
+panda.env
+panda-data/
+cookies.txt

@@ -1,0 +1,14 @@
+[package]
+name = "entitlements"
+description = "Plan definitions and entitlement checks shared by server and clients"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+serde.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true

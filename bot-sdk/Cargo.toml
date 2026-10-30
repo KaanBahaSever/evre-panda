@@ -1,0 +1,47 @@
+[package]
+name = "era-bot-sdk"
+description = "Rust SDK for Era bots: gateway events, REST helpers, prefix commands and voice"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[features]
+default = []
+# Voice: join voice channels, publish a stereo music track, push PCM, listen.
+# Pulls the LiveKit SDK (libwebrtc); chat-only bots leave it off.
+voice = ["dep:livekit"]
+
+[dependencies]
+protocol.workspace = true
+
+futures.workspace = true
+log.workspace = true
+rand.workspace = true
+# rustls with ring (installed as the process provider), never aws-lc-rs.
+reqwest = { version = "0.13", default-features = false, features = ["json", "rustls-no-provider"] }
+rustls.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = ["net"] }
+tokio-tungstenite = { workspace = true, features = ["rustls-tls-native-roots"] }
+url.workspace = true
+
+livekit = { workspace = true, optional = true }
+
+[dev-dependencies]
+anyhow.workspace = true
+clap.workspace = true
+env_logger.workspace = true
+tokio = { workspace = true, features = ["full"] }
+
+[[example]]
+name = "echo"
+
+[[example]]
+name = "buttons"
+
+[[example]]
+name = "tone"
+required-features = ["voice"]
